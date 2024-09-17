@@ -1,4 +1,4 @@
-const userModel = require("../models/userModel");
+const userModel = require("../../models/userModel");
 const bcrypt = require("bcryptjs");
 const e = require("express");
 const jwt = require("jsonwebtoken");
@@ -27,22 +27,22 @@ async function userSignInController(req, res) {
     if (checkPassword) {
       const tokenData = {
         _id: user._id,
-        email : user.email,
-
+        email: user.email,
       };
-      const token = await jwt.sign(tokenData, process.env.TOKEN_SECRET_KEY, { expiresIn: 60 * 60 * 8 });
-      
+      const token = await jwt.sign(tokenData, process.env.TOKEN_SECRET_KEY, {
+        expiresIn: 60 * 60 * 8,
+      });
+
       const tokenOption = {
         httpOnly: true,
-        secure: true
-    }
+        secure: true,
+      };
       res.cookie("token", token, tokenOption).status(200).json({
         message: "User logged in successfully",
         data: token,
         success: true,
-        error: false
-       });
-    
+        error: false,
+      });
     } else {
       throw new Error("Please check again your Email or Password");
     }

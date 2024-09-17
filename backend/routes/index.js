@@ -2,19 +2,21 @@ const express = require("express");
 
 const router = express.Router();
 
-const userSignUpController = require("../controller/userSignUp");
-const userSignInController = require("../controller/userSignIn");
-const userDetailsController = require("../controller/userDetails");
+const userSignUpController = require("../controller/User/userSignUp");
+const userSignInController = require("../controller/User/userSignIn");
+const userDetailsController = require("../controller/User/userDetails");
 const authToken = require("../middleware/authToken");
-const userLogout = require("../controller/userLogout");
-const allUsers = require("../controller/allUsers");
-const updateUser = require("../controller/updateUser");
-const UploadProductController = require("../controller/uploadProduct");
-const getProductController = require("../controller/getProduct");
-const updateProductController = require("../controller/updateProduct");
-const UploadTableController = require("../controller/uploadTable");
-const getTableController = require("../controller/getTable");
-const updateTableController = require("../controller/updateTable");
+const userLogout = require("../controller/User/userLogout");
+const allUsers = require("../controller/User/allUsers");
+const updateUser = require("../controller/User/updateUser");
+const UploadProductController = require("../controller/Product/uploadProduct");
+const getProductController = require("../controller/Product/getProduct");
+const updateProductController = require("../controller/Product/updateProduct");
+const UploadTableController = require("../controller/Table/uploadTable");
+const getTableController = require("../controller/Table/getTable");
+const updateTableController = require("../controller/Table/updateTable");
+const getCategoryProduct = require("../controller/Product/getCategoryProduct");
+const getTypeTable = require("../controller/Table/getTypeTable");
 
 router.post("/signup", userSignUpController);
 router.post("/signin", userSignInController);
@@ -27,12 +29,17 @@ router.post("/update-user", authToken, updateUser);
 
 //product
 router.post("/upload-product", authToken, UploadProductController);
-router.get("/get-product", getProductController)
-router.post("/update-product", authToken,updateProductController)
+router.get("/get-product", getProductController);
+router.post("/update-product", authToken, updateProductController);
+//category - product
+router.get("/get-categoryProduct", getCategoryProduct);
+
 
 //table
-router.post("/upload-table", authToken, UploadTableController)
-router.get("/get-table", getTableController)
-router.post("/update-table", authToken,updateTableController )
+router.post("/upload-table", authToken, UploadTableController);
+router.get("/get-table", getTableController);
+router.post("/update-table", authToken, updateTableController);
+//type - table
+router.get("/get-typeTable", getTypeTable);
 
 module.exports = router;

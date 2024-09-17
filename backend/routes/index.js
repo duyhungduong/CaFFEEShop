@@ -17,6 +17,7 @@ const getTableController = require("../controller/Table/getTable");
 const updateTableController = require("../controller/Table/updateTable");
 const getCategoryProduct = require("../controller/Product/getCategoryProduct");
 const getTypeTable = require("../controller/Table/getTypeTable");
+const getAreaTable = require("../controller/Table/getAreaTable");
 
 router.post("/signup", userSignUpController);
 router.post("/signin", userSignInController);
@@ -41,5 +42,7 @@ router.get("/get-table", getTableController);
 router.post("/update-table", authToken, updateTableController);
 //type - table
 router.get("/get-typeTable", getTypeTable);
+//area - table
+router.get("/get-areaTable", getAreaTable);
 
 module.exports = router;

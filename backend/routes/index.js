@@ -19,6 +19,7 @@ const getCategoryProduct = require("../controller/Product/getCategoryProduct");
 const getTypeTable = require("../controller/Table/getTypeTable");
 const getAreaTable = require("../controller/Table/getAreaTable");
 const getCategoryWiseProduct = require("../controller/Product/getCategoryWiseProduct");
+const getProductDetails = require("../controller/Product/getProductDetails");
 
 router.post("/signup", userSignUpController);
 router.post("/signin", userSignInController);
@@ -37,6 +38,9 @@ router.post("/update-product", authToken, updateProductController);
 router.get("/get-categoryProduct", getCategoryProduct);
 //
 router.post("/category-product", getCategoryWiseProduct)
+//product details
+router.post("/product-details", getProductDetails)
+
 
 
 //table

@@ -20,6 +20,10 @@ const getTypeTable = require("../controller/Table/getTypeTable");
 const getAreaTable = require("../controller/Table/getAreaTable");
 const getCategoryWiseProduct = require("../controller/Product/getCategoryWiseProduct");
 const getProductDetails = require("../controller/Product/getProductDetails");
+const addToCartController = require("../controller/User/addToCartController");
+const addToCartTableController = require("../controller/Table/addToCartTableController");
+const countAddToCartTable = require("../controller/Table/countAddToCartTable");
+const countAddToCartProduct = require("../controller/User/countAddToCartProduct");
 
 router.post("/signup", userSignUpController);
 router.post("/signin", userSignInController);
@@ -37,11 +41,13 @@ router.post("/update-product", authToken, updateProductController);
 //category - product
 router.get("/get-categoryProduct", getCategoryProduct);
 //
-router.post("/category-product", getCategoryWiseProduct)
+router.post("/category-product", getCategoryWiseProduct);
 //product details
-router.post("/product-details", getProductDetails)
+router.post("/product-details", getProductDetails);
 
-
+//Emloyee add to cart
+router.post("/addtocart", authToken, addToCartController);
+router.get("/countAddToCartProduct", authToken, countAddToCartProduct);
 
 //table
 router.post("/upload-table", authToken, UploadTableController);
@@ -51,5 +57,9 @@ router.post("/update-table", authToken, updateTableController);
 router.get("/get-typeTable", getTypeTable);
 //area - table
 router.get("/get-areaTable", getAreaTable);
+//User add table to cart
+router.post("/addtabletocart", authToken, addToCartTableController);
+//Count add to cart table
+router.get("/countaddtocarttable", authToken, countAddToCartTable);
 
 module.exports = router;

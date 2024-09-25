@@ -24,6 +24,9 @@ const addToCartController = require("../controller/User/addToCartController");
 const addToCartTableController = require("../controller/Table/addToCartTableController");
 const countAddToCartTable = require("../controller/Table/countAddToCartTable");
 const countAddToCartProduct = require("../controller/User/countAddToCartProduct");
+const  addToCartViewProduct  = require("../controller/User/addToCartProductView");
+const updateAddToCartProduct = require("../controller/User/updateAddToCartProduct");
+const deleteAddToCartProduct = require("../controller/User/deleteAddToCartProduct");
 
 router.post("/signup", userSignUpController);
 router.post("/signin", userSignInController);
@@ -45,9 +48,19 @@ router.post("/category-product", getCategoryWiseProduct);
 //product details
 router.post("/product-details", getProductDetails);
 
+
 //Emloyee add to cart
 router.post("/addtocart", authToken, addToCartController);
 router.get("/countAddToCartProduct", authToken, countAddToCartProduct);
+router.get("/view-cart-product", authToken, addToCartViewProduct)
+//update quantity
+router.post("/update-cart-product",authToken,updateAddToCartProduct)
+
+router.post("/delete-cart-product",authToken,deleteAddToCartProduct)
+
+
+
+
 
 //table
 router.post("/upload-table", authToken, UploadTableController);

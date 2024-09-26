@@ -7,7 +7,10 @@ const addToCart = new mongoose.Schema(
       type: String,
     },
     quantity: Number,
-    userId: String,
+    userId: {
+      ref: "user",
+      type: String,
+    },
   },
   {
     timestamps: true,

@@ -6,7 +6,7 @@ const getAreaTable = async (req, res) => {
   try {
     const areaTable = await tableModel.distinct("tableArea");
 
-    console.log("tableArea ", areaTable);
+    // console.log("tableArea ", areaTable);
 
     const areaByType = [];
 

@@ -7,7 +7,7 @@ const addToCartTableController = async (req, res) => {
 
     const isTableAvailable = await addToCartTableModel.findOne({ tableId });
 
-    console.log("isTableAvailable ", isTableAvailable);
+    // console.log("isTableAvailable ", isTableAvailable);
 
     if (isTableAvailable) {
       return res.json({

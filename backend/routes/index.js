@@ -32,6 +32,11 @@ const filterProductController = require("../controller/Product/filterProduct");
 const paymentController = require("../controller/Order/paymentController");
 const USDpaymentController = require("../controller/Order/USDpaymentController");
 const webhooks = require("../controller/Order/webhook");
+const getTypeWiseTable = require("../controller/Table/getTypeWiseTable");
+const addToFavoriteController = require("../controller/User/addToFavoriteController");
+const countAddToFavoriteProduct = require("../controller/User/countAddToFavoriteProduct");
+const addToFavoriteViewProduct = require("../controller/User/addToFavoriteProductView");
+const deleteAddToFavoriteProduct = require("../controller/User/deleteAddToFavoriteProduct");
 
 router.post("/signup", userSignUpController);
 router.post("/signin", userSignInController);
@@ -65,6 +70,11 @@ router.get("/view-cart-product", authToken, addToCartViewProduct)
 router.post("/update-cart-product",authToken,updateAddToCartProduct)
 
 router.post("/delete-cart-product",authToken,deleteAddToCartProduct)
+//Generall add to favorite
+router.post("/addtofavorite", authToken, addToFavoriteController)
+router.get("/countAddToFavoriteProduct", authToken, countAddToFavoriteProduct)
+router.get("/view-favorite-product",authToken, addToFavoriteViewProduct)
+router.post("/delete-favorite-product",authToken,deleteAddToFavoriteProduct)
 
 //Payment and order
 router.post("/checkout",authToken, paymentController)
@@ -78,6 +88,7 @@ router.get("/get-table", getTableController);
 router.post("/update-table", authToken, updateTableController);
 //type - table
 router.get("/get-typeTable", getTypeTable);
+router.post("/type-table",getTypeWiseTable)
 //area - table
 router.get("/get-areaTable", getAreaTable);
 //User add table to cart

@@ -8,6 +8,8 @@ const tableSchema = new mongoose.Schema(
         tableImage: [],
         description: String,
         seatCount: Number,
+        tableStatus: String,
+        isAvailableTable: Boolean,
   },
   {
     timestamps: true,

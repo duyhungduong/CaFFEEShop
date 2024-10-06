@@ -37,6 +37,8 @@ const addToFavoriteController = require("../controller/User/addToFavoriteControl
 const countAddToFavoriteProduct = require("../controller/User/countAddToFavoriteProduct");
 const addToFavoriteViewProduct = require("../controller/User/addToFavoriteProductView");
 const deleteAddToFavoriteProduct = require("../controller/User/deleteAddToFavoriteProduct");
+const orderController = require("../controller/Order/order.controller");
+const allOrderController = require("../controller/Order/allOrder.controller");
 
 router.post("/signup", userSignUpController);
 router.post("/signin", userSignInController);
@@ -79,8 +81,9 @@ router.post("/delete-favorite-product",authToken,deleteAddToFavoriteProduct)
 //Payment and order
 router.post("/checkout",authToken, paymentController)
 router.post("/testcheckout", authToken, USDpaymentController)
-router.post("/webhook" , authToken, webhooks) //api/webhook
-
+router.post("/webhook", webhooks) //api/webhook
+router.get("/order-list",authToken,orderController)
+router.get("/all-order",authToken,allOrderController)
 
 //table
 router.post("/upload-table", authToken, UploadTableController);

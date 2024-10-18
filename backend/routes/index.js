@@ -39,6 +39,12 @@ const addToFavoriteViewProduct = require("../controller/User/addToFavoriteProduc
 const deleteAddToFavoriteProduct = require("../controller/User/deleteAddToFavoriteProduct");
 const orderController = require("../controller/Order/order.controller");
 const allOrderController = require("../controller/Order/allOrder.controller");
+const getTableDetails = require("../controller/Table/getTableDetails");
+const addToBookingTableController = require("../controller/User/addToBookingTableController");
+const countOrderProduct = require("../controller/Order/countOrderProduct");
+const bookingController = require("../controller/Booking/bookingController");
+const changeTableStatus = require("../controller/Table/changeTableStatus");
+const allBookingController = require("../controller/Booking/allBookingController");
 
 router.post("/signup", userSignUpController);
 router.post("/signin", userSignInController);
@@ -84,6 +90,7 @@ router.post("/testcheckout", authToken, USDpaymentController)
 router.post("/webhook", webhooks) //api/webhook
 router.get("/order-list",authToken,orderController)
 router.get("/all-order",authToken,allOrderController)
+router.get("/countOrderProduct", authToken, countOrderProduct)
 
 //table
 router.post("/upload-table", authToken, UploadTableController);
@@ -98,5 +105,11 @@ router.get("/get-areaTable", getAreaTable);
 router.post("/addtabletocart", authToken, addToCartTableController);
 //Count add to cart table
 router.get("/countaddtocarttable", authToken, countAddToCartTable);
+router.post("/table-details",getTableDetails)
+//Booking and Booking list
+router.post("/booking", addToBookingTableController)
+router.get("/booking-list", authToken, bookingController)
+router.post("/change-table-status", authToken, changeTableStatus)
+router.get("/all-booking",authToken , allBookingController)
 
 module.exports = router;

@@ -1,6 +1,5 @@
 const tableModel = require("../../models/tableModel");
 
-
 const getTypeWiseTable = async(req, res) =>{
     try {
         const {tableType} = req?.body || req?.query

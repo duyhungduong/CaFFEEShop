@@ -13,7 +13,7 @@ const allBookingController = async(request,response)=>{
         })
     }
 
-    const AllOrder = await bookingTablbeModel.find().sort({ createdAt : -1 })
+    const AllOrder = await bookingTablbeModel.find().populate("tableId").populate("userId").sort({ createdAt : -1 })
 
     return response.status(200).json({
         data : AllOrder,

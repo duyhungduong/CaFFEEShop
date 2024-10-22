@@ -24,7 +24,7 @@ const addToCartController = require("../controller/User/addToCartController");
 const addToCartTableController = require("../controller/Table/addToCartTableController");
 const countAddToCartTable = require("../controller/Table/countAddToCartTable");
 const countAddToCartProduct = require("../controller/User/countAddToCartProduct");
-const  addToCartViewProduct  = require("../controller/User/addToCartProductView");
+const addToCartViewProduct = require("../controller/User/addToCartProductView");
 const updateAddToCartProduct = require("../controller/User/updateAddToCartProduct");
 const deleteAddToCartProduct = require("../controller/User/deleteAddToCartProduct");
 const searchProduct = require("../controller/Product/searchProduct");
@@ -45,6 +45,14 @@ const countOrderProduct = require("../controller/Order/countOrderProduct");
 const bookingController = require("../controller/Booking/bookingController");
 const changeTableStatus = require("../controller/Table/changeTableStatus");
 const allBookingController = require("../controller/Booking/allBookingController");
+const payInCashController = require("../controller/Order/payInCashController");
+const addToMessageController = require("../controller/User/addToMessageController");
+const addToMessageView = require("../controller/User/addToMessageView");
+const updateMessage = require("../controller/User/updateMessage");
+const countMessage = require("../controller/User/countMessage");
+const countBookingTable = require("../controller/Booking/countBookingTable");
+const filterTableController = require("../controller/Table/filterTable");
+const sendMessageToAllUserController = require("../controller/User/sendMessageToAllUser");
 
 router.post("/signup", userSignUpController);
 router.post("/signin", userSignInController);
@@ -65,32 +73,32 @@ router.get("/get-categoryProduct", getCategoryProduct);
 router.post("/category-product", getCategoryWiseProduct);
 //product details
 router.post("/product-details", getProductDetails);
-//searchProduct 
-router.get("/search", searchProduct)
-router.post("/filter-product",filterProductController)
-
+//searchProduct
+router.get("/search", searchProduct);
+router.post("/filter-product", filterProductController);
 
 //Emloyee add to cart
 router.post("/addtocart", authToken, addToCartController);
 router.get("/countAddToCartProduct", authToken, countAddToCartProduct);
-router.get("/view-cart-product", authToken, addToCartViewProduct)
+router.get("/view-cart-product", authToken, addToCartViewProduct);
 //update quantity
-router.post("/update-cart-product",authToken,updateAddToCartProduct)
+router.post("/update-cart-product", authToken, updateAddToCartProduct);
 
-router.post("/delete-cart-product",authToken,deleteAddToCartProduct)
+router.post("/delete-cart-product", authToken, deleteAddToCartProduct);
 //Generall add to favorite
-router.post("/addtofavorite", authToken, addToFavoriteController)
-router.get("/countAddToFavoriteProduct", authToken, countAddToFavoriteProduct)
-router.get("/view-favorite-product",authToken, addToFavoriteViewProduct)
-router.post("/delete-favorite-product",authToken,deleteAddToFavoriteProduct)
+router.post("/addtofavorite", authToken, addToFavoriteController);
+router.get("/countAddToFavoriteProduct", authToken, countAddToFavoriteProduct);
+router.get("/view-favorite-product", authToken, addToFavoriteViewProduct);
+router.post("/delete-favorite-product", authToken, deleteAddToFavoriteProduct);
 
 //Payment and order
-router.post("/checkout",authToken, paymentController)
-router.post("/testcheckout", authToken, USDpaymentController)
-router.post("/webhook", webhooks) //api/webhook
-router.get("/order-list",authToken,orderController)
-router.get("/all-order",authToken,allOrderController)
-router.get("/countOrderProduct", authToken, countOrderProduct)
+router.post("/checkout", authToken, paymentController);
+router.post("/testcheckout", authToken, USDpaymentController);
+router.post("/webhook", webhooks); //api/webhook
+router.get("/order-list", authToken, orderController);
+router.get("/all-order", authToken, allOrderController);
+router.get("/countOrderProduct", authToken, countOrderProduct);
+router.post("/pay-In-Cash", authToken, payInCashController);
 
 //table
 router.post("/upload-table", authToken, UploadTableController);
@@ -98,18 +106,28 @@ router.get("/get-table", getTableController);
 router.post("/update-table", authToken, updateTableController);
 //type - table
 router.get("/get-typeTable", getTypeTable);
-router.post("/type-table",getTypeWiseTable)
+router.post("/type-table", getTypeWiseTable);
 //area - table
 router.get("/get-areaTable", getAreaTable);
 //User add table to cart
 router.post("/addtabletocart", authToken, addToCartTableController);
 //Count add to cart table
 router.get("/countaddtocarttable", authToken, countAddToCartTable);
-router.post("/table-details",getTableDetails)
+router.post("/table-details", getTableDetails);
+//filterTable
+router.post("/filter-table", filterTableController);
+
 //Booking and Booking list
-router.post("/booking", addToBookingTableController)
-router.get("/booking-list", authToken, bookingController)
-router.post("/change-table-status", authToken, changeTableStatus)
-router.get("/all-booking",authToken , allBookingController)
+router.post("/booking", addToBookingTableController);
+router.get("/booking-list", authToken, bookingController);
+router.post("/change-table-status", authToken, changeTableStatus);
+router.get("/all-booking", authToken, allBookingController);
+router.get("/count-booking-table", authToken, countBookingTable);
+//Message
+router.post("/send-message", addToMessageController);
+router.get("/getMessage", authToken, addToMessageView);
+router.put("/mark-as-read", updateMessage);
+router.get("/count-unreadmessage", authToken, countMessage);
+router.post("/send-to-all", sendMessageToAllUserController);
 
 module.exports = router;

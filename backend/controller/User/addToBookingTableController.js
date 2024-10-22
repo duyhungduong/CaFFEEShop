@@ -12,7 +12,6 @@ async function addToBookingTableController(req, res) {
       arrivalTime
     });
 
-    
 
     if (isTableAvailable) {
       return res.status(400).json({

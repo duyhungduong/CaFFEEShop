@@ -14,7 +14,7 @@ async function changeTableStatus(req, res) {
       ...(description && { description: description }),
       ...(seatCount && { seatCount: seatCount }),
       ...(tableStatus && { tableStatus: tableStatus }),
-      ...(isAvailableTable || { isAvailableTable: isAvailableTable }),
+      ...({ isAvailableTable: isAvailableTable }),
     };
 
     const table = await tableModel.findById(sessionTable);

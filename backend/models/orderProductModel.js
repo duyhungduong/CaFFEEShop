@@ -11,7 +11,7 @@ const orderSchema = new mongoose.Schema({
     },
     userId : {
         type : String,
-        default : ""
+        default : "",
     },
     paymentDetails : {
         paymentId : {

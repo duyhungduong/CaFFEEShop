@@ -53,6 +53,7 @@ const countMessage = require("../controller/User/countMessage");
 const countBookingTable = require("../controller/Booking/countBookingTable");
 const filterTableController = require("../controller/Table/filterTable");
 const sendMessageToAllUserController = require("../controller/User/sendMessageToAllUser");
+const getDiscountProductController = require("../controller/Product/getDiscountProduct");
 
 router.post("/signup", userSignUpController);
 router.post("/signin", userSignInController);
@@ -76,6 +77,8 @@ router.post("/product-details", getProductDetails);
 //searchProduct
 router.get("/search", searchProduct);
 router.post("/filter-product", filterProductController);
+//discount product
+router.get("/get-discount-product", getDiscountProductController);
 
 //Emloyee add to cart
 router.post("/addtocart", authToken, addToCartController);

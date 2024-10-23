@@ -12,7 +12,7 @@ const allOrderController = async(request,response)=>{
         })
     }
 
-    const AllOrder = await orderModel.find().sort({ createdAt : -1 })
+    const AllOrder = await orderModel.find().populate("userId").sort({ createdAt : -1 })
 
     return response.status(200).json({
         data : AllOrder,
